@@ -1,5 +1,8 @@
-exports.host = 8080;
-exports.username = 'root';
-exports.password = 'root';
-exports.dbname = 'dbname';
+let configSQL = {
+    host: 8080,
+    user: 'root',
+    password: 'root',
+    database: 'world'
+};
 
+module.exports = configSQL;

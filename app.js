@@ -1,25 +1,32 @@
 const port = require('./config/server').port;
 
-let http = require('http');
-let url = require('url');
-let express = require('express');
 
-let logger = require('morgan');
-let router = require('./router');
+let http = require('http'),
+    url = require('url'),
+    express = require('express'),
+    logger = require('morgan'),
+    mysql = require('mysql').createConnection(require('./config/sql')) ;
+
 
 let app = express();
+let server = http.createServer(app);
+
+
+/***************************/
+/* Configuration d'express */
+/***************************/
 
 // Gestion des vues avec le moteur de template EJS
-app.set('views', 'views');
 app.set('view engine', 'ejs');
-app.set('port', port);
 
 // Log avec morgan
 app.use(logger('dev'));
 app.use('/assets', express.static('public'));
-app.use('/', router);
+app.use('/', require('./routes/index'));
 
 
-let server = http.createServer(app);
+// Connexion a MySQL
+mysql.connect();
+
 
 server.listen(port);
