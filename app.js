@@ -17,7 +17,7 @@ let server = http.createServer(app);
 /***************************/
 
 // Gestion des vues avec le moteur de template EJS
-app.set('view engine', 'ejs');
+app.set('view engine', 'twig');
 
 // Log avec morgan
 app.use(logger('dev'));
@@ -25,7 +25,7 @@ app.use('/assets', express.static('public'));
 app.use('/', require('./routes/index'));
 
 
-// Connexion a MySQL
+// Connexion à MySQL
 mysql.connect();
 
 

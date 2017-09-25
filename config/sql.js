@@ -1,8 +1,8 @@
 let configSQL = {
-    host: 8080,
+    host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'world'
+    database: 'nodejs'
 };
 
 module.exports = configSQL;
